@@ -1,0 +1,10 @@
+{
+  "name": "Alphabette Hub",
+  "description": "Hub central Zero-Knowledge et WCAG AAA de l'écosystème Alphabette : Passeport Universel, Boîte à Idées Vivante et Lanceur d'Applications.",
+  "requestFramePermissions": [
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

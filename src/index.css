@@ -1,0 +1,582 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ==========================================================================
+   ALPHABETTE HUB — PASSEPORT UNIVERSEL WCAG AAA (20+ RÉGLAGES EN TEMPS RÉEL)
+   Root html font-size stays fixed at 16px so the Double Barre never overflows
+   on 360px/390px viewports even when XXL text + XL buttons are activated.
+   ========================================================================== */
+
+:root {
+  --font-main: 'Atkinson Hyperlegible', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-active: var(--font-main);
+  --letter-spacing: 0em;
+  --word-spacing: 0em;
+  --line-height: 1.55;
+  --border-width: 1px;
+  --focus-width: 3px;
+  --btn-min-h: 48px;
+  --btn-pad-y: 10px;
+  --btn-pad-x: 18px;
+  --reading-max-w: 1024px;
+  --radius-card: 16px;
+  --radius-btn: 12px;
+}
+
+html {
+  font-size: 16px;
+}
+
+/* ==========================================================================
+   1. TAILLE DE TEXTE (ISOLÉE DU HEADER DOUBLE BARRE)
+   ========================================================================== */
+html[data-font-size="normal"] {
+  --body-size: 16px;
+  --heading-xl: 28px;
+  --heading-lg: 21px;
+  --heading-md: 18px;
+  --text-sm-scaled: 14px;
+}
+
+html[data-font-size="lg"] {
+  --body-size: 19.5px;
+  --heading-xl: 32px;
+  --heading-lg: 24px;
+  --heading-md: 20.5px;
+  --text-sm-scaled: 16.5px;
+}
+
+html[data-font-size="xl"] {
+  --body-size: 22px;
+  --heading-xl: 35px;
+  --heading-lg: 26.5px;
+  --heading-md: 22.5px;
+  --text-sm-scaled: 18.5px;
+}
+
+html[data-font-size="xxl"] {
+  --body-size: 25px;
+  --heading-xl: 38px;
+  --heading-lg: 29px;
+  --heading-md: 25px;
+  --text-sm-scaled: 20.5px;
+}
+
+/* ==========================================================================
+   2. FAMILLE DE POLICE, INTERLIGNE, ESPACEMENT & LARGEUR DE LECTURE
+   ========================================================================== */
+html[data-font-family="standard"] {
+  --font-active: var(--font-main);
+  --word-spacing: 0em;
+}
+
+html[data-font-family="dyslexic"] {
+  --font-active: var(--font-main);
+  --word-spacing: 0.18em;
+}
+
+html[data-font-family="serif"] {
+  --font-active: Georgia, 'Times New Roman', Cambria, serif;
+  --word-spacing: 0.02em;
+}
+
+html[data-font-family="mono"] {
+  --font-active: var(--font-mono);
+  --word-spacing: 0.04em;
+}
+
+html[data-line-height="compact"] { --line-height: 1.4; }
+html[data-line-height="normal"]  { --line-height: 1.6; }
+html[data-line-height="relaxed"] { --line-height: 1.9; }
+html[data-line-height="double"]  { --line-height: 2.2; }
+
+html[data-letter-spacing="normal"] { --letter-spacing: 0em; }
+html[data-letter-spacing="wide"]   { --letter-spacing: 0.05em; }
+html[data-letter-spacing="extra"]  { --letter-spacing: 0.11em; }
+
+html[data-reading-width="narrow"] { --reading-max-w: 720px; }
+html[data-reading-width="normal"] { --reading-max-w: 1024px; }
+html[data-reading-width="wide"]   { --reading-max-w: 1280px; }
+
+/* ==========================================================================
+   3. MOTRICITÉ : TAILLE DES BOUTONS, FOCUS RENFORCÉ, ANIMATIONS, CURSEUR
+   ========================================================================== */
+html[data-button-size="normal"] {
+  --btn-min-h: 48px;
+  --btn-pad-y: 10px;
+  --btn-pad-x: 18px;
+}
+
+html[data-button-size="large"] {
+  --btn-min-h: 58px;
+  --btn-pad-y: 14px;
+  --btn-pad-x: 22px;
+}
+
+html[data-button-size="xl"] {
+  --btn-min-h: 68px;
+  --btn-pad-y: 18px;
+  --btn-pad-x: 24px;
+}
+
+html[data-focus-style="strong"] {
+  --border-width: 2px;
+  --focus-width: 4px;
+}
+
+html[data-reduced-motion="true"] *,
+html[data-reduced-motion="true"] *::before,
+html[data-reduced-motion="true"] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+html[data-underline-links="true"] main a {
+  text-decoration: underline !important;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
+}
+
+html[data-large-cursor="true"] body {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M4 3 L4 27 L11 21 L16 29 L20 27 L15 19 L24 19 Z' fill='%23000000' stroke='%23FFD700' stroke-width='2.2' stroke-linejoin='round'/%3E%3C/svg%3E") 4 3, auto;
+}
+
+/* ==========================================================================
+   4. THÈMES VISUELS (5 THÈMES WCAG AAA)
+   ========================================================================== */
+
+/* THÈME 1 : Clair Haute Visibilité */
+html[data-theme="light"] {
+  --bg-page: #f8fafc;
+  --bg-surface: #f1f5f9;
+  --bg-card: #ffffff;
+  --bg-input: #ffffff;
+  --text-primary: #0a0a0a;
+  --text-secondary: #334155;
+  --border-color: #cbd5e1;
+  --border-strong: #64748b;
+  --accent: #00449e;
+  --accent-hover: #003070;
+  --accent-text: #ffffff;
+  --accent-soft: #e6f0fa;
+  --accent-soft-text: #003580;
+  --danger: #9b1c1c;
+  --danger-soft: #fef2f2;
+  --success: #065f46;
+  --success-soft: #ecfdf5;
+  --focus-ring: #d97706;
+  --shadow-card: 0 2px 8px rgba(15, 23, 42, 0.05);
+}
+
+/* THÈME 2 : Papier Sépia (Anti-éblouissement / Confort Dys) */
+html[data-theme="sepia"] {
+  --bg-page: #f5efe2;
+  --bg-surface: #ede4d1;
+  --bg-card: #fbf7ee;
+  --bg-input: #fffdf8;
+  --text-primary: #231a12;
+  --text-secondary: #4e3f30;
+  --border-color: #cbbba0;
+  --border-strong: #7b6850;
+  --accent: #0f5132;
+  --accent-hover: #0a3b24;
+  --accent-text: #ffffff;
+  --accent-soft: #e3ece5;
+  --accent-soft-text: #0a3b24;
+  --danger: #8b1e1e;
+  --danger-soft: #faecec;
+  --success: #0f5132;
+  --success-soft: #e3ece5;
+  --focus-ring: #b45309;
+  --shadow-card: 0 2px 8px rgba(35, 26, 18, 0.06);
+}
+
+/* THÈME 3 : Sombre Onyx */
+html[data-theme="onyx"] {
+  --bg-page: #0b111b;
+  --bg-surface: #131c2b;
+  --bg-card: #162032;
+  --bg-input: #0e1522;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --border-color: #2b394f;
+  --border-strong: #64748b;
+  --accent: #38bdf8;
+  --accent-hover: #7dd3fc;
+  --accent-text: #090d16;
+  --accent-soft: #1c2c42;
+  --accent-soft-text: #7dd3fc;
+  --danger: #fca5a5;
+  --danger-soft: #450a0a;
+  --success: #6ee7b7;
+  --success-soft: #064e3b;
+  --focus-ring: #facc15;
+  --shadow-card: 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+
+/* THÈME 4 : Contraste Maximum Sombre (Noir pur & Jaune #FFD700) */
+html[data-theme="high-contrast"] {
+  --bg-page: #000000;
+  --bg-surface: #000000;
+  --bg-card: #000000;
+  --bg-input: #000000;
+  --text-primary: #ffffff;
+  --text-secondary: #ffd700;
+  --border-color: #ffffff;
+  --border-strong: #ffd700;
+  --accent: #ffd700;
+  --accent-hover: #ffffff;
+  --accent-text: #000000;
+  --accent-soft: #000000;
+  --accent-soft-text: #ffd700;
+  --danger: #ffd700;
+  --danger-soft: #000000;
+  --success: #ffd700;
+  --success-soft: #000000;
+  --focus-ring: #ffd700;
+  --border-width: 2px;
+  --shadow-card: none;
+}
+
+/* THÈME 5 : Contraste Maximum Clair (Blanc pur & Noir pur 21:1) */
+html[data-theme="high-contrast-light"] {
+  --bg-page: #ffffff;
+  --bg-surface: #ffffff;
+  --bg-card: #ffffff;
+  --bg-input: #ffffff;
+  --text-primary: #000000;
+  --text-secondary: #000000;
+  --border-color: #000000;
+  --border-strong: #000000;
+  --accent: #000000;
+  --accent-hover: #1f2937;
+  --accent-text: #ffffff;
+  --accent-soft: #f3f4f6;
+  --accent-soft-text: #000000;
+  --danger: #000000;
+  --danger-soft: #ffffff;
+  --success: #000000;
+  --success-soft: #ffffff;
+  --focus-ring: #0000ee;
+  --border-width: 2px;
+  --shadow-card: none;
+}
+
+/* ==========================================================================
+   5. COULEURS D'ACCENTUATION PERSONNALISÉES (SUR CLAIR / SÉPIA / ONYX)
+   ========================================================================== */
+html[data-theme="light"][data-accent="emerald"],
+html[data-theme="sepia"][data-accent="emerald"] {
+  --accent: #046c4e;
+  --accent-hover: #03543f;
+  --accent-text: #ffffff;
+  --accent-soft: #e6f4ef;
+  --accent-soft-text: #03543f;
+}
+
+html[data-theme="light"][data-accent="violet"],
+html[data-theme="sepia"][data-accent="violet"] {
+  --accent: #4c1d95;
+  --accent-hover: #3b0764;
+  --accent-text: #ffffff;
+  --accent-soft: #f0ebfa;
+  --accent-soft-text: #4c1d95;
+}
+
+html[data-theme="light"][data-accent="amber"],
+html[data-theme="sepia"][data-accent="amber"] {
+  --accent: #92400e;
+  --accent-hover: #78350f;
+  --accent-text: #ffffff;
+  --accent-soft: #fef3c7;
+  --accent-soft-text: #78350f;
+}
+
+html[data-theme="onyx"][data-accent="emerald"] {
+  --accent: #34d399;
+  --accent-hover: #6ee7b7;
+  --accent-text: #06281e;
+  --accent-soft: #11302a;
+  --accent-soft-text: #6ee7b7;
+}
+
+html[data-theme="onyx"][data-accent="violet"] {
+  --accent: #c4b5fd;
+  --accent-hover: #ddd6fe;
+  --accent-text: #1b1038;
+  --accent-soft: #261d45;
+  --accent-soft-text: #ddd6fe;
+}
+
+html[data-theme="onyx"][data-accent="amber"] {
+  --accent: #fbbf24;
+  --accent-hover: #fcd34d;
+  --accent-text: #1c1002;
+  --accent-soft: #332510;
+  --accent-soft-text: #fcd34d;
+}
+
+/* ==========================================================================
+   6. FILTRES DALTONISME (APPLIQUÉS SUR LE CONTENU PRINCIPAL)
+   ========================================================================== */
+html[data-color-blind="protanopia"] .hub-color-filter-target {
+  filter: url(#cb-protanopia);
+}
+html[data-color-blind="deuteranopia"] .hub-color-filter-target {
+  filter: url(#cb-deuteranopia);
+}
+html[data-color-blind="tritanopia"] .hub-color-filter-target {
+  filter: url(#cb-tritanopia);
+}
+html[data-color-blind="grayscale"] .hub-color-filter-target {
+  filter: grayscale(100%);
+}
+
+/* ==========================================================================
+   7. APPLICATION GLOBALE & COMPOSANTS ACCESSIBLES
+   ========================================================================== */
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+.hub-scaled-content {
+  font-family: var(--font-active);
+  font-size: var(--body-size);
+  letter-spacing: var(--letter-spacing);
+  word-spacing: var(--word-spacing);
+  line-height: var(--line-height);
+  max-width: var(--reading-max-w);
+}
+
+.hub-h1 {
+  font-size: var(--heading-xl);
+  line-height: 1.22;
+  text-wrap: balance;
+}
+
+.hub-h2 {
+  font-size: var(--heading-lg);
+  line-height: 1.28;
+}
+
+.hub-h3 {
+  font-size: var(--heading-md);
+  line-height: 1.32;
+}
+
+.hub-sm {
+  font-size: var(--text-sm-scaled);
+  line-height: 1.48;
+}
+
+.hub-mono {
+  font-family: var(--font-mono);
+}
+
+/* Focus AAA ultra-visible au clavier */
+*:focus-visible {
+  outline: var(--focus-width) solid var(--focus-ring) !important;
+  outline-offset: 2px !important;
+}
+
+/* Surfaces & Cartes */
+.surface-box {
+  background-color: var(--bg-surface);
+  border: var(--border-width) solid var(--border-color);
+}
+
+.card-box {
+  background-color: var(--bg-card);
+  border: var(--border-width) solid var(--border-color);
+  box-shadow: var(--shadow-card);
+  border-radius: var(--radius-card);
+}
+
+.text-muted {
+  color: var(--text-secondary);
+}
+
+.input-aaa {
+  background-color: var(--bg-input);
+  color: var(--text-primary);
+  border: 2px solid var(--border-strong);
+  border-radius: var(--radius-btn);
+  font-size: var(--body-size);
+}
+
+.input-aaa:focus {
+  border-color: var(--accent);
+}
+
+/* Boutons WCAG AAA : adaptables de 48px à 68px */
+.btn-aaa {
+  min-height: var(--btn-min-h);
+  min-width: 48px;
+  border-radius: var(--radius-btn);
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: var(--btn-pad-y) var(--btn-pad-x);
+  cursor: pointer;
+  transition: transform 100ms ease, background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+}
+
+.btn-aaa:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.btn-aaa:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background-color: var(--accent);
+  color: var(--accent-text);
+  border: 2px solid var(--accent);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
+.btn-secondary {
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  border: 2px solid var(--border-strong);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  border-color: var(--accent);
+  background-color: var(--accent-soft);
+  color: var(--accent-soft-text);
+}
+
+.btn-option {
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  border: 2px solid var(--border-color);
+}
+
+.btn-option:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+
+.btn-option[aria-pressed="true"],
+.btn-option[aria-checked="true"] {
+  background-color: var(--accent);
+  color: var(--accent-text);
+  border-color: var(--accent);
+}
+
+html[data-theme="high-contrast"] .btn-option[aria-pressed="true"],
+html[data-theme="high-contrast"] .btn-option[aria-checked="true"] {
+  border-color: #ffffff;
+}
+
+html[data-theme="high-contrast"] .btn-option span,
+html[data-theme="high-contrast-light"] .btn-option span {
+  opacity: 1 !important;
+}
+
+/* Onglets principaux du Hub */
+.tab-btn {
+  min-height: 52px;
+  font-weight: 700;
+  border-bottom: 3px solid transparent;
+  color: var(--text-secondary);
+  transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
+}
+
+.tab-btn:hover {
+  color: var(--text-primary);
+  background-color: var(--accent-soft);
+}
+
+.tab-btn[aria-selected="true"] {
+  color: var(--text-primary);
+  border-bottom-color: var(--accent);
+  background-color: var(--accent-soft);
+}
+
+html[data-theme="high-contrast"] .tab-btn[aria-selected="true"] {
+  color: #ffd700;
+  border-bottom-color: #ffd700;
+  border-top: 2px solid #ffd700;
+}
+
+/* Animation micro en écoute */
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(220, 38, 38, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0);
+  }
+}
+
+.mic-listening {
+  animation: pulse-ring 1.3s infinite;
+  background-color: #b91c1c !important;
+  color: #ffffff !important;
+  border-color: #ffffff !important;
+}
+
+/* Zone blanche obligatoire autour du QR Code */
+.qr-wrapper {
+  background-color: #ffffff;
+  padding: 12px;
+  border-radius: 12px;
+  border: 2px solid #0a0a0a;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Lien d'évitement (Skip link) */
+.skip-link {
+  position: absolute;
+  top: -120px;
+  left: 16px;
+  z-index: 100;
+  background: var(--accent);
+  color: var(--accent-text);
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-weight: 700;
+}
+
+.skip-link:focus {
+  top: 12px;
+}
+
+/* Impression propre : masque la double barre et les filtres d'overlay */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
